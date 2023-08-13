@@ -4,16 +4,14 @@
 int main()
 {
 
- printf("         P  /_\\  P                              \n");
- printf("        /_\\_|_|_/_\\                             \n");
- printf("   n_n | ||. .|| | n_n         Bem vindo ao     \n");
- printf("    |_|_|nnnn nnnn|_|_|     Jogo de Adivinhacao!\n");
- printf("   |" "  |  |_|  |"  " |                        \n");
- printf("   |_____| ' _ ' |_____|                        \n");
- printf("         \\__|_|__/                              \n");
- printf("Descubra um numero entre 0 e 99!\n");
-
-    
+    printf("         P  /_\\  P                              \n");
+    printf("        /_\\_|_|_/_\\                            \n");
+    printf("   n_n | ||. .|| | n_n         Bem vindo ao      \n");
+    printf("    |_|_|nnnn nnnn|_|_|     Jogo de Adivinhacao! \n");
+    printf("   |"   "  |  |_|  |" " |                        \n");
+    printf("   |_____| ' _ ' |_____|                         \n");
+    printf("         \\__|_|__/                              \n");
+    printf("Descubra um numero entre 0 e 99!\n");
 
     int segundos = time(0);
     srand(segundos);
@@ -22,7 +20,7 @@ int main()
     int chute;
     int numerodetentativas = 5;
     int tentativas = 1;
-    int acertou = 0;
+    int acertou = (chute == numerosecreto);
     int nivel;
     double pontos = 1000;
     printf("Qual o nivel de dificuldade?\n");
@@ -31,18 +29,18 @@ int main()
     scanf("%d", &nivel);
     switch (nivel)
     {
-    case 1:
+    case '1':
         numerodetentativas = 20;
         break;
-    case 2:
+    case '2':
         numerodetentativas = 10;
         break;
     default:
         numerodetentativas = 6;
         break;
     }
-    system("cls");
-    for(int i = 1; i <= numerodetentativas; i++)
+
+    for (int i = 1; i <= numerodetentativas; i++)
     {
         printf("Tentativa %d \n", tentativas);
         printf("Qual e seu chute? \n");
@@ -55,12 +53,12 @@ int main()
             // ele vai pra for( ; ; cá!!!)
         }
 
-        int acertou = (chute == numerosecreto);
         int maior = chute > numerosecreto;
         int menor = chute < numerosecreto;
 
-        if (acertou)
+        if (chute == numerosecreto)
         {
+            acertou = 1;
             break;
         }
         else if (maior)
@@ -75,9 +73,10 @@ int main()
         double pontosperdidos = abs((chute - numerosecreto) / (double)2);
         pontos = pontos - pontosperdidos;
     }
-    printf("FIM DE JOGO");
+    printf("FIM DE JOGO\n");
+    system("cls");
     if (acertou)
-    {   
+    {
         printf("**************************************\n");
         printf("ORA ORA TEMOS UM SHERLOCK HOLMES AQUI!\n");
         printf("**************************************\n");
@@ -96,9 +95,10 @@ int main()
         printf("      OOOOOO   OOOOOOOOO   OOOOOO      \n");
         printf("         OOOOOO         OOOOOO         \n");
         printf("             OOOOOOOOOOOO              \n");
-        } else{
-            printf("Voce eh mt burro, tente denovo!\n");
-        }
-    
+        printf("Sua pontuação foi %d", pontos);
+    }
+    if (!acertou)
+    {
+        printf("tente denovo sua jamula!\n");
+    }
 }
-
