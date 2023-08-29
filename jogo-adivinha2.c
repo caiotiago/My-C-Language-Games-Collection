@@ -95,7 +95,7 @@ int main()
         printf("      OOOOOO   OOOOOOOOO   OOOOOO      \n");
         printf("         OOOOOO         OOOOOO         \n");
         printf("             OOOOOOOOOOOO              \n");
-        printf("Sua pontuação foi %d", pontos);
+        printf("Sua pontuacaoo foi %lf \n", pontos);
     }
     if (!acertou)
     {
